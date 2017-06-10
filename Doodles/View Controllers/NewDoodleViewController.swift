@@ -29,10 +29,9 @@ class NewDoodleViewController: UIViewController {
     fileprivate var canvas: Canvas {
         return view as! Canvas
     }
-    
-    
-    @IBOutlet var swipeGestureDown: UISwipeGestureRecognizer!
-
+    @IBAction func clean(_ sender: Any) {
+        canvas.erase()
+    }
     
     @IBAction func saveTapped() {
         let alert = UIAlertController(title: "Name it!",
@@ -59,8 +58,6 @@ class NewDoodleViewController: UIViewController {
             let image = UIImage(view: self.view)
             
             PHPhotoLibrary.shared().performChanges( {PHAssetChangeRequest.creationRequestForAsset(from: image) }, completionHandler: nil)
-            
-            
         }))
         
         present(alert, animated: true, completion: nil)
